@@ -31,14 +31,16 @@ public class player_controller : MonoBehaviour
         mouse_horizontal = Input.GetAxis("Mouse X");
         Debug.Log(mouse_horizontal);
 
+        transform.Rotate(0, mouse_horizontal*rotateSpeed, 0);
+        
+        
         if (characterController.isGrounded)
         {
             // We are grounded, so recalculate
             // move direction directly from axes
-
             moveDirection = transform.rotation * (new Vector3(horizontal, 0.0f, vertical));
             moveDirection *= speed;
-            transform.Rotate(0, mouse_horizontal*rotateSpeed, 0);
+            
 
             if (Input.GetButton("Jump"))
             {
